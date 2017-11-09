@@ -1,6 +1,6 @@
 ## Linkki automaattisiin Puppetin asetuksiin:
 ```bash
-wget -O - https://raw.githubusercontent.com/miikkahuuskonen/KeskitettyHallinta/master/puppet/setup/linuxsetup.sh | bash
+wget -O - https://raw.githubusercontent.com/miikkahuuskonen/KeskitettyHallinta/master/setup/linuxsetup.sh | bash
 ```
 
 ## Manuaalinen asennus:
