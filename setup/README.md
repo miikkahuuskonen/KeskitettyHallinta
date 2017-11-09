@@ -18,8 +18,8 @@ git clone https://github.com/miikkahuuskonen/KeskitettyHallinta.git
 ```
 ### Tiedostojen kopionti ja puppetin modulin käyttöönotto:
 ```bash
-cd KeskitettyHallinta/puppet/puppet
-sudo cp -TRv /home/$(whoami)/KeskitettyHallinta/puppet/puppet /etc/puppet/
+cd KeskitettyHallinta/puppet
+sudo cp -TRv /home/$(whoami)/KeskitettyHallinta/puppet/ /etc/puppet/
 cd /etc/puppet/
 
 sudo puppet apply -e 'class {"hellomiikka":}'
