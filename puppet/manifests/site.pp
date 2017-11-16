@@ -1,5 +1,5 @@
 include hellomaster
 
 node default {
-	include hellomiikka
+	include sshd
 }
