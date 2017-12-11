@@ -2,11 +2,11 @@
 
 #### Asennettavat ohjelmat skriptin avulla:
 
-puppet git
+puppet, git, tree
 
 #### Asennettavat ohjelmat puppetilla:
 
-Eclipse, Atom (atom, deb), Slack (slack-desktop, deb), Skype (skypeforlinux, deb)
+Atom, Slack, Skype
 
 ### Aloitus
 1. Päivitetään pakettikanta
