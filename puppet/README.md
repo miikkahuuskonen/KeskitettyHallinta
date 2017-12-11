@@ -1,5 +1,30 @@
+# Puppet moduuli
+
+#### Asennettavat ohjelmat skriptin avulla:
+
+puppet git
+
+#### Asennettavat ohjelmat puppetilla:
+
+Eclipse, Atom (atom, deb), Slack (slack-desktop, deb), Skype (skypeforlinux, deb)
+
+### Aloitus
+1. Päivitetään pakettikanta
+	sudo apt-get update
+
+2. Ladataan Atomin asennustiedosto (.deb tiedosto) ja asennetaan Atom
+	sudo dpkg -i atom-amd64(1).deb
+
+3. Ladataan Slackin asennustiedosto (.deb tiedosto) ja asennetaan Slack
+	sudo dpkg -i slack-desktop-3.0.0-amd64.deb
+
+4. Ladataan Skypen asennustiedosto (.deb tiedosto) ja asennetaan Skypen
+	sudo dpkg -i skypeforlinux-64.deb
+
+
+#### Moduulin init.pp
 ```
-class desktop {
+class dev-mod {
 
         file { '/tmp/atom-amd64.deb':
                 ensure => present,
