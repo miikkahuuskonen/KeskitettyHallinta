@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "########## START ##########"
+echo "########## SETUP START ##########"
 echo "Hello, $(whoami)!"
 
 echo "-- setxkbmap fi --"
@@ -8,9 +8,9 @@ setxkbmap fi
 echo "-- Set timezone to Helsinki/Finland --"
 sudo timedatectl set-timezone Europe/Helsinki
 
-echo "-- Package update and installation for git, tree, puppet, vagrant, virtualbox --"
+echo "-- Package update and installation for git, tree, puppet --"
 sudo apt-get update
-sudo apt-get install -y git tree puppet vagrant virtualbox
+sudo apt-get install -y git tree puppet
 
 echo "-- Cloning git repository --"
 git clone https://github.com/miikkahuuskonen/KeskitettyHallinta.git
@@ -23,5 +23,4 @@ cd /etc/puppet/
 echo "-- Applying site.pp --"
 sudo puppet apply /etc/puppet/manifests/site.pp
 
-echo "########## DONE ##########"
-echo "Everythings ready, happy hacking!"
+echo "########## SETUP DONE ##########"
