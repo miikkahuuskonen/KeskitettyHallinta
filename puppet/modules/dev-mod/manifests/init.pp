@@ -1,7 +1,7 @@
 class dev-mod {
         File { owner => '0', group => '0', mode => '0644', }
         Package { ensure => 'installed', allowcdrom => true, }
-	$userhome = '/home/miikkahuuskonen'
+	$userhome = '/home/xubuntu'
 
         file { '/tmp/atom-amd64.deb':
                 ensure => present,
