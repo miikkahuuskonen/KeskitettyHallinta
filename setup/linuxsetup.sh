@@ -16,7 +16,10 @@ echo "-- Cloning git repository --"
 git clone https://github.com/miikkahuuskonen/KeskitettyHallinta.git
 
 echo "-- Downloading Atom, Slack and Skype .deb files--"
-cd KeskitettyHallinta/puppet/files/
+cd KeskitettyHallinta/puppet/
+
+mkdir files
+cd files
 
 wget https://downloads.slack-edge.com/linux_releases/slack-desktop-3.0.0-amd64.deb
 wget https://atom-installer.github.com/v1.22.1/atom-amd64.deb
