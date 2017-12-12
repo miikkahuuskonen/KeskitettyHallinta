@@ -3,6 +3,10 @@ class dev-mod {
         Package { ensure => 'installed', allowcdrom => true, }
 	$userhome = '/home/xubuntu'
 
+	package { 'libappindicator1':
+                ensure => installed,
+        }
+
         file { '/tmp/atom-amd64.deb':
                 ensure => present,
                 source => "puppet:///files/atom-amd64.deb"
