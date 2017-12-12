@@ -15,6 +15,8 @@ sudo apt-get install -y git tree puppet
 echo "-- Cloning git repository --"
 git clone https://github.com/miikkahuuskonen/KeskitettyHallinta.git
 
+mkdir .config/autostart/
+
 echo "-- Downloading Atom, Slack and Skype .deb files--"
 cd KeskitettyHallinta/puppet/
 
