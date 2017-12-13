@@ -25,7 +25,7 @@ Tämän jälkeen skripti päivittää pakettikannan ```sudo apt-get update``` ja
 ```sudo apt-get install -y git tree puppet```.
 
 Skripti kloonaa git-repon: ```git clone https://github.com/miikkahuuskonen/KeskitettyHallinta.git```
-ja lisäksi luo käyttäjän kotihakemistoon .config/autosart ja .atom/ kansiot valmiiksi niihin tulevia asetustiedostoja varten.
+ja lisäksi luo käyttäjän kotihakemistoon .atom/ kansion valmiiksi siihen tulevaa asetustiedostoa varten.
 
 Seuraavaksi skripti luo files kansion KeskitettyHallinta/puppet/ hakemistoon ja hakee files-kansioon puppetilla asennettavien ohjelmien .deb tiedostot. Tähän ratkaisuun päädyin tätä tehtävää varten, koska githubin versionhallinta ei tykkää yli 50mb tiedostoista ja lataaminen puppet-moduulin avulla ei onnistunut.
 
@@ -55,7 +55,7 @@ Moduuli hakee ohjelmien asennustiedostot files-kansiosta ja asentaa ohjelmat.
 Lisäksi se hakee moduulin templates osiosta asetuksen Skypelle, joka estää ohjelman automaattisen käynnistymisen ja
 Atomille, jonka asetuksissa estetään tietojen lähetys kehittäjälle sekä welcome-ruudun avautuminen.
 
-Moduulia tehdessäni huomasin, että tämä asetus on käyttäjän kotihakemistossa .config/autostart/ kansion alla, joka luodaan vasta Skypen asennuksen jälkeen, mutta joka korvataan asetustiedostolla tässä moduulissa.
+Moduulia tehdessäni huomasin, että Atomin asetukset ovat käyttäjän kotihakemistossa .atom/ kansion alla, joka luodaan vasta Atom ensiavauksen jälkeen, mutta joka korvataan asetustiedostolla tässä moduulissa.
 
 Ensimmäisiä kertoja moduulia ajettaessa, ei Slack-desktop suostunut asentumaan täysin vaan valitti, että 'libappindicator1' puuttuu eikä asennus ole täydellinen. Asiaa tutkiessani löysin avun osoitteesta [https://unix.stackexchange.com/questions/191551/missing-libappindicator1],
 jossa kehoitettiin asentamaan kyseinen osanen, joten lisäsin sen moduuliin asennettavaksi.

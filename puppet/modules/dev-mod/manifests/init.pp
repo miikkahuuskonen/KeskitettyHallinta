@@ -11,10 +11,6 @@ class dev-mod {
 		ensure => 'directory',
 	}
 
-	file { "${userhome}/.atom":
-                ensure => 'directory',
-        }
-
         file { '/tmp/atom-amd64.deb':
                 ensure => present,
                 source => "puppet:///files/atom-amd64.deb"
