@@ -41,9 +41,11 @@ class dev-mod {
                 content => template('dev-mod/skypeforlinux.desktop'),
         }
 
-	file { '${userhome}/.atom/config.cson':
-                owner => xubuntu,
+	file { "${userhome}/.atom/config.cson":
+                notify => Service['atom'],
+		owner => xubuntu,
                 group => xubuntu,
+		require => Package['atom'],
                 content => template('dev-mod/config.cson'),
         }
 
