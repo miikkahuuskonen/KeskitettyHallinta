@@ -1,6 +1,6 @@
 # Puppet moduuli
 
-Toteutettu: Linux Xubuntu 16.04.3 ja Puppet 3.8.5
+Toteutettu: Linux Xubuntu 16.04.3 ja Puppet 3.8.5 // Testattu MacBook Pro 15" (mid2010) 13.12.2017
 
 Tehdään moduuli puppetille, joka asentaa orjakoneille ohjelmistokehitykseen tarvittavia perustyökaluja, kuten
 Atom, Slack sekä git. Lisäksi asennetaan Skype yhteydenpito-ohjelmaksi.
@@ -25,7 +25,7 @@ Tämän jälkeen skripti päivittää pakettikannan ```sudo apt-get update``` ja
 ```sudo apt-get install -y git tree puppet```.
 
 Skripti kloonaa git-repon: ```git clone https://github.com/miikkahuuskonen/KeskitettyHallinta.git```
-ja lisäksi luo käyttäjän kotihakemistoon .config kansion sisälle kansion autostart valmiiksi sinne tulevaa asetustiedostoa varten.
+ja lisäksi luo käyttäjän kotihakemistoon .config/autosart ja .atom/ kansiot valmiiksi niihin tulevia asetustiedostoja varten.
 
 Seuraavaksi skripti luo files kansion KeskitettyHallinta/puppet/ hakemistoon ja hakee files-kansioon puppetilla asennettavien ohjelmien .deb tiedostot. Tähän ratkaisuun päädyin tätä tehtävää varten, koska githubin versionhallinta ei tykkää yli 50mb tiedostoista ja lataaminen puppet-moduulin avulla ei onnistunut.
 
@@ -34,7 +34,7 @@ wget https://downloads.slack-edge.com/linux_releases/slack-desktop-3.0.0-amd64.d
 wget https://atom-installer.github.com/v1.22.1/atom-amd64.deb
 wget https://repo.skype.com/latest/skypeforlinux-64.deb
 ```
-Tässä on huomioitavaa, että latauspaikka voi vaihtua ja lisäksi versionhallinta ainakaan Slackin ja Atomin kohdalla ei toimi, koska linkit viittaavat tiettyihin versioihin.
+Tässä on huomioitavaa, että latauspaikka voi vaihtua ja lisäksi versionhallinta ainakaan Slackin ja Atomin kohdalla ei toimi, koska linkit viittaavat tiettyihin versioihin. Nämä testattu 13.12.2017 toimiviksi.
 
 Tämän jälkeen skripti kopioi KeskitettyHallinta/puppet/ hakemiston ja korvaa hakemiston /etc/puppet/ sisällön:
 
@@ -52,7 +52,8 @@ Puppetin moduulin asennus ja käyttöönotto on valmis.
 ### Moduulin init.pp sisältö
 
 Moduuli hakee ohjelmien asennustiedostot files-kansiosta ja asentaa ohjelmat.
-Lisäksi se hakee moduulin templates osiosta asetuksen Skypelle, joka estää ohjelman automaattisen käynnistymisen.
+Lisäksi se hakee moduulin templates osiosta asetuksen Skypelle, joka estää ohjelman automaattisen käynnistymisen ja
+Atomille, jonka asetuksissa estetään tietojen lähetys kehittäjälle sekä welcome-ruudun avautuminen.
 
 Moduulia tehdessäni huomasin, että tämä asetus on käyttäjän kotihakemistossa .config/autostart/ kansion alla, joka luodaan vasta Skypen asennuksen jälkeen, mutta joka korvataan asetustiedostolla tässä moduulissa.
 
@@ -105,6 +106,14 @@ class dev-mod {
         file { "${userhome}/.config/autostart/skypeforlinux.desktop":
                 content => template('dev-mod/skypeforlinux.desktop'),
         }
+        
+        file { "${userhome}/.atom/config.cson":
+                ensure => 'present',
+                replace => 'yes',
+                owner => xubuntu,
+                group => xubuntu,
+                content => template('dev-mod/config.cson'),
+        }
 
 }
 
@@ -119,3 +128,5 @@ https://www.puppetcookbook.com
 http://terokarvinen.com/2017/simpler-puppet-manifests-resource-defaults-and-manifest-ordering
 
 https://jwpitkanen.wordpress.com/kurssit/hallinta-harjoitus-4/
+
+https://github.com/Miikka-Alatalo/puppet/tree/master/tehtavat/h4
