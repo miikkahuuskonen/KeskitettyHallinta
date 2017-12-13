@@ -67,11 +67,15 @@ Puppet toimii root-oikeuksilla ja näin ollen käyttäjän kotihakemistoa on ei 
 class dev-mod {
         File { owner => '0', group => '0', mode => '0644', }
         Package { ensure => 'installed', allowcdrom => true, }
-        $userhome = '/home/xubuntu'
-
-        package { 'libappindicator1':
+	$userhome = '/home/xubuntu'
+	
+	package { 'libappindicator1':
                 ensure => installed,
         }
+
+	file { "${userhome}/.config/autostart":
+		ensure => 'directory',
+	}
 
         file { '/tmp/atom-amd64.deb':
                 ensure => present,
@@ -106,11 +110,11 @@ class dev-mod {
         file { "${userhome}/.config/autostart/skypeforlinux.desktop":
                 content => template('dev-mod/skypeforlinux.desktop'),
         }
-        
-        file { "${userhome}/.atom/config.cson":
-                ensure => 'present',
-                replace => 'yes',
-                owner => xubuntu,
+
+	file { "${userhome}/.atom/config.cson":
+		ensure => 'present',
+		replace => 'yes',
+		owner => xubuntu,
                 group => xubuntu,
                 content => template('dev-mod/config.cson'),
         }
