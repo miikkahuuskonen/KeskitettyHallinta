@@ -5,11 +5,11 @@ Toteutettu: Linux Xubuntu 16.04.3 ja Puppet 3.8.5
 Tehdään moduuli puppetille, joka asentaa orjakoneille ohjelmistokehitykseen tarvittavia perustyökaluja, kuten
 Atom, Slack sekä git. Lisäksi asennetaan Skype yhteydenpito-ohjelmaksi.
 
-#### Asennettavat ohjelmat skriptin avulla:
+### Asennettavat ohjelmat skriptin avulla:
 
 puppet, git, tree
 
-#### Asennettavat ohjelmat puppetilla:
+### Asennettavat ohjelmat puppetilla:
 
 Atom, Slack, Skype
 
@@ -49,7 +49,7 @@ sudo puppet apply /etc/puppet/manifests/site.pp
 
 Puppetin moduulin asennus ja käyttöönotto on valmis.
 
-#### Moduulin init.pp sisältö
+### Moduulin init.pp sisältö
 
 Moduuli hakee ohjelmien asennustiedostot files-kansiosta ja asentaa ohjelmat.
 Lisäksi se hakee moduulin templates osiosta asetuksen Skypelle, joka estää ohjelman automaattisen käynnistymisen.
