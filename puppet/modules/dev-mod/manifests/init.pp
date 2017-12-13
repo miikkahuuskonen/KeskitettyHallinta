@@ -2,9 +2,17 @@ class dev-mod {
         File { owner => '0', group => '0', mode => '0644', }
         Package { ensure => 'installed', allowcdrom => true, }
 	$userhome = '/home/xubuntu'
-
+	
 	package { 'libappindicator1':
                 ensure => installed,
+        }
+
+	file { "${userhome}/.config/autostart":
+		ensure => 'directory',
+	}
+
+	file { "${userhome}/.atom":
+                ensure => 'directory',
         }
 
         file { '/tmp/atom-amd64.deb':
